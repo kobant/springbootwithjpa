@@ -35,13 +35,18 @@ public class UserController {
 		return  new CommonResult().success(all);
 	}
 
-	/*@RequestMapping("/hello/{id}")
+	/**
+	 * 我也提交吧
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/hello/{id}")
 	@ResponseBody
 	public User hello(@PathVariable("id") Integer id){
 		User one = userDao.getOne(id);
 		System.out.println(id);
 		return one;
-	}*/
+	}
 
 	@RequestMapping("/hello/{name}")
 	@ResponseBody
