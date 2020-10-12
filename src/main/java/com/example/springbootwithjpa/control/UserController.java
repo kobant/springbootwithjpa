@@ -26,6 +26,10 @@ public class UserController {
 	@Autowired
     UserDao userDao;
 
+	/**
+	 * 真的提交一次
+	 * @return
+	 */
 	@RequestMapping("/hello")
 	@ResponseBody
 	public Object hello(){
