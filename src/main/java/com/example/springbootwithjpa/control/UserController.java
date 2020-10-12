@@ -65,6 +65,11 @@ public class UserController {
 	}
 
 
+	/**
+	 * 测试
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/delete/{id}")
 	@ResponseBody
 	public Object delete(@PathVariable("id") Integer id){
