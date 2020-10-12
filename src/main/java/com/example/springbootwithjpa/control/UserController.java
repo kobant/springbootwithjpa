@@ -26,6 +26,10 @@ public class UserController {
 	@Autowired
     UserDao userDao;
 
+	/**
+	 * 真的提交一次
+	 * @return
+	 */
 	@RequestMapping("/hello")
 	@ResponseBody
 	public Object hello(){
@@ -36,7 +40,7 @@ public class UserController {
 	}
 
 	/**
-	 * 测试提交
+	 * 我也提交吧
 	 * @param id
 	 * @return
 	 */
