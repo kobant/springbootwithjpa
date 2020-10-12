@@ -1,5 +1,6 @@
 package com.example.springbootwithjpa.dao;
 
+import com.example.springbootwithjpa.entity.JpaUser;
 import com.example.springbootwithjpa.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -7,8 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Id;
-import java.util.List;
 
 /**
  * /**
@@ -32,4 +31,7 @@ public interface UserDao extends JpaRepository<User,Integer> {
 	@Transactional
 	@Query("delete from User u where u.id in (:ids)")
     public void deleteList(@Param("ids") Integer[] ids);
+
+    @Query(nativeQuery = true,value="select u.* ,j.role_name from jpa_user u  join jpa_role j on u.role_id=j.id and user_name like %?1%" )
+	public Object getByll(String userName );
 }

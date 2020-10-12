@@ -3,6 +3,7 @@ package com.example.springbootwithjpa.control;
 import com.example.springbootwithjpa.dao.UserDao;
 import com.example.springbootwithjpa.entity.CommonResult;
 
+import com.example.springbootwithjpa.entity.JpaUser;
 import com.example.springbootwithjpa.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -94,4 +95,14 @@ public class UserController {
 		return new CommonResult().success();
 	}
 
+	@GetMapping("/getjoin/{username}")
+	@ResponseBody
+	public Object getjoin(@PathVariable("username") String username){
+		Object name = userDao.getByll(username);
+		System.out.println(username);
+		if (name!=null){
+			return new CommonResult().success("查询成功！",name);
+		}
+		return new CommonResult().failed();
+	}
 }
