@@ -5,6 +5,10 @@ import com.example.springbootwithjpa.entity.CommonResult;
 
 import com.example.springbootwithjpa.entity.JpaUser;
 import com.example.springbootwithjpa.entity.User;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,16 +26,30 @@ import java.util.List;
  * 创建时间 2020/10/10 16:26
  */
 @Controller
+@Api(tags = "UserController", description = "用户管理系统")
 public class UserController {
 
 	@Autowired
     UserDao userDao;
 
+	@ApiOperation("查询全部员工根据Id排序")
+	@GetMapping("/hello/getAlls")
+	@ResponseBody
+	public Object getAlls(){
+		List<User> all = userDao.getAll();
+		if (all!=null){
+			return new CommonResult().success("查询成功！",all);
+		}else {
+			return new CommonResult().failed("查询失败！");
+		}
+	}
+
 	/**
 	 * 真的提交一次
 	 * @return
 	 */
-	@RequestMapping("/hello")
+	@ApiOperation("发起拼团")
+	@GetMapping("/hello")
 	@ResponseBody
 	public Object hello(){
 
@@ -45,10 +63,14 @@ public class UserController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping("/hello/{id}")
+	@GetMapping("/hello/{id}")
 	@ResponseBody
+	@ApiOperation(value = "根据主键查询对象",notes = "员工编号必须传递")
+	@ApiImplicitParams({
+			@ApiImplicitParam(paramType = "query",name = "ID",value = "员工编号",required=true,dataType="Integer")
+	})
 	public Object hello(@PathVariable("id") Integer id){
-		User one = userDao.getOne(id);
+		User one = userDao.findByUserId(id);
 		if (one!=null){
 			return new CommonResult().success("查询成功！",one);
 		}else {
@@ -57,7 +79,7 @@ public class UserController {
 
 	}
 
-	@RequestMapping("/hello/{name}")
+	@GetMapping("/helloname/{name}")
 	@ResponseBody
 	public Object hello(@PathVariable("name") String name){
 		User name1 = userDao.findName(name);
