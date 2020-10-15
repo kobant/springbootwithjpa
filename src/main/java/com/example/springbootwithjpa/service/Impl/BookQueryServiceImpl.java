@@ -60,7 +60,7 @@ public class BookQueryServiceImpl implements BookQueryService {
 			public Predicate toPredicate(Root<Book> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
 				List<Predicate> list = new ArrayList<>();
 				if (null!=bookQuery.getIsbn()&&!"".equals(bookQuery.getName())){
-					list.add(criteriaBuilder.equal(root.get("name").as(String.class),bookQuery.getName()));
+					list.add(criteriaBuilder.like(root.get("name").as(String.class),"%"+bookQuery.getName()+"%"));
 				}
 				if(null!=bookQuery.getIsbn()&&!"".equals(bookQuery.getIsbn())){
 					list.add(criteriaBuilder.equal(root.get("isbn").as(String.class), bookQuery.getIsbn()));
