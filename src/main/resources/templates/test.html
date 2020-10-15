@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+   <!-- <script  th:src="@{/jquery/jquery-2.1.1.min.js}"></script>-->
+    <script th:src="@{/bootstrap/jquery/jquery-2.1.1.min.js}"></script>
+</head>
+<body>
+<button id="btn_secKill">秒杀商品</button>
+<div id="count_num"></div>
+<div id="result"></div>
+<script type="text/javascript">
+	var countNum = 0;
+	$(function(){
+		$("#btn_secKill").click(function(){
+			var json={"code":"2019053016502800101","num":10};
+			for(var i = 0 ; i < 400 ; i++){
+				$.post("secKill",json,function(data){
+					if(data != "排队人数太多，请稍后再试."){
+						$("#result").append("<br />" + data + "<br />");
+					}else{
+						$("#result").append(data + " ");
+					}
+					if(data.indexOf("恭喜您，购买成功") != -1){
+						countNum += 2000;
+					}
+					$("#count_num").text("总共卖出："+countNum);
+				});
+			}
+		});
+	});
+</script>
+</body>
+</html>
