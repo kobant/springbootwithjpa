@@ -1,8 +1,9 @@
 package com.example.springbootwithjpa.Lock;
 
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,6 +25,9 @@ public class RedisLock {
 	 * @param timeStamp 时间戳：当前时间+超时时间
 	 * @return
 	 */
+
+	//提交测试分支严志辉   2020/10/16/ 10：20
+
 	public boolean lock(String lockKey,String timeStamp){
 		if (stringRedisTemplate.opsForValue().setIfAbsent(lockKey,timeStamp)){
 
