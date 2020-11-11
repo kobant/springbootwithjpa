@@ -1,0 +1,26 @@
+
+server:
+  port: 9901
+
+
+  driver-class-name: com.mysql.jdbc.Driver
+  jdbc-url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8
+  username: root
+  password: mysqladmin
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    masterslave:
+
+
+file:
+saveLinuxPath: /tmp/store
+saveWindowsPath: D:\\picture
+
+
