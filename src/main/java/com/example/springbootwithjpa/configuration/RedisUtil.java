@@ -1,4 +1,4 @@
-package com.example.springbootwithjpa.config;
+package com.example.springbootwithjpa.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundListOperations;

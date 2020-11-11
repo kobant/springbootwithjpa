@@ -1,4 +1,4 @@
-package com.example.springbootwithjpa.config;
+package com.example.springbootwithjpa.configuration;
 
 import java.util.concurrent.TimeUnit;
 

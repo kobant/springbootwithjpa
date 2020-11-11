@@ -42,5 +42,9 @@ public interface UserDao extends JpaRepository<User,Integer> {
     @Query(nativeQuery = true,value="select u.* ,j.role_name from jpa_user u  join jpa_role j on u.role_id=j.id and user_name like %?1%" )
 	public Object getByll(String userName );
 
+	@Transactional
+	@Modifying
+    @Query(nativeQuery = true ,value="insert into user (u_email, u_name) VALUES (user.u_email,user.u_name )")
+	public int addUser(User u);
 
 }

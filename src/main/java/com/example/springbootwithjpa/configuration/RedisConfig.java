@@ -1,4 +1,4 @@
-package com.example.springbootwithjpa.config;
+package com.example.springbootwithjpa.configuration;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

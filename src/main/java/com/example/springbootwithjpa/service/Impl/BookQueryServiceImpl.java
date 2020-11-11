@@ -76,4 +76,11 @@ public class BookQueryServiceImpl implements BookQueryService {
 		},pageable);
 		return bookPage;
 	}
+
+	@Override
+	public Book findByName(String name) {
+		return bookRepository.findByName(name);
+	}
+
+
 }

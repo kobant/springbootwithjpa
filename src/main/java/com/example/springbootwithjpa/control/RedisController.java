@@ -1,6 +1,6 @@
 package com.example.springbootwithjpa.control;
 
-import com.example.springbootwithjpa.config.RedisUtil;
+import com.example.springbootwithjpa.configuration.RedisUtil;
 import com.example.springbootwithjpa.entity.CommonResult;
 import com.example.springbootwithjpa.entity.UserEntity;
 import org.springframework.web.bind.annotation.PathVariable;

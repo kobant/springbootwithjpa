@@ -11,10 +11,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,6 +41,8 @@ public class UserController {
 		}
 	}
 
+
+
 	/**
 	 * 真的提交一次
 	 * @return
@@ -67,7 +66,7 @@ public class UserController {
 	@ResponseBody
 	@ApiOperation(value = "根据主键查询对象",notes = "员工编号必须传递")
 	@ApiImplicitParams({
-			@ApiImplicitParam(paramType = "query",name = "ID",value = "员工编号",required=true,dataType="Integer")
+			@ApiImplicitParam(name = "id", value = "id不用传",  required = false,dataType="Integer")
 	})
 	public Object hello(@PathVariable("id") Integer id){
 		User one = userDao.findByUserId(id);
@@ -77,6 +76,13 @@ public class UserController {
 			return new CommonResult().failed("查询失败！");
 		}
 
+	}
+
+	@PostMapping("/hello/add")
+	@ApiOperation("保存对象USER")
+	public Object saveUser(User user){
+
+		return userDao.save(user);
 	}
 
 	@GetMapping("/helloname/{name}")
@@ -127,4 +133,6 @@ public class UserController {
 		}
 		return new CommonResult().failed();
 	}
+
+
 }

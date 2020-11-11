@@ -3,6 +3,7 @@ package com.example.springbootwithjpa.service;
 import com.example.springbootwithjpa.entity.Book;
 import com.example.springbootwithjpa.entity.BookQuery;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -30,5 +31,12 @@ public interface BookQueryService {
 	 * @return
 	 */
 	Page<Book> findBookCriteria(Integer page, Integer size, BookQuery bookQuery);
+
+	/**
+	 * 根据书名查询
+	 * @param name  书名
+	 * @return
+	 */
+	public Book findByName(String name);
 
 }
