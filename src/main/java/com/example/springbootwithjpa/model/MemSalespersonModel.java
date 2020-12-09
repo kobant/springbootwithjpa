@@ -1,51 +1,50 @@
-package com.example.springbootwithjpa.entity;
+package com.example.springbootwithjpa.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * @Description:
- * @Author: liaocongcong
- * @Date: 2020/11/9 15:08
+ * @Description: 销售代表资料表
+ * @date 2019/11/20 
  */
 @Entity
 @Table(name = "mem_salesperson")
 public class MemSalespersonModel {
 
 	public MemSalespersonModel() {
+		
+    }
 
-	}
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+    @Column(name = "mobile", columnDefinition = "varchar(24) NOT NULL COMMENT '手机号'")
+    private String mobile;
+    
+    @Column(name = "names", columnDefinition = "varchar(32) COMMENT '姓名'")
+    private String name;
+    
+    @Column(name = "cate", columnDefinition = "varchar(48) COMMENT '品类'")
+    private String cate;
+    
+    @Column(name = "center", columnDefinition = "varchar(48) COMMENT '管理中心'")
+    private String center;
+    
+    @Column(name = "type", columnDefinition = "int(2) DEFAULT 0 COMMENT '类型，0：销售代表，1：售后 '")
+    private int type;
+    
+    @Column(name = "state", columnDefinition = "int(2) DEFAULT 0 COMMENT '状态，0：可用，1：删除 '")
+    private int state;
+    
+    @Column(name = "creator", columnDefinition = "varchar(32) COMMENT '创建人'")
+    private String creator;
+    
+    @Column(name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'")
+    private Timestamp createTime;
 
-	@Id
-	@GeneratedValue
-	private Long id;
-
-	@Column(name = "mobile", columnDefinition = "varchar(24) NOT NULL COMMENT '手机号'")
-	private String mobile;
-
-	@Column(name = "name", columnDefinition = "varchar(32) COMMENT '姓名'")
-	private String name;
-
-	@Column(name = "cate", columnDefinition = "varchar(48) COMMENT '品类'")
-	private String cate;
-
-	@Column(name = "center", columnDefinition = "varchar(48) COMMENT '管理中心'")
-	private String center;
-
-	@Column(name = "type", columnDefinition = "int(2) DEFAULT 0 COMMENT '类型，0：销售代表，1：售后 '")
-	private int type;
-
-	@Column(name = "state", columnDefinition = "int(2) DEFAULT 0 COMMENT '状态，0：可用，1：删除 '")
-	private int state;
-
-	@Column(name = "creator", columnDefinition = "varchar(32) COMMENT '创建人'")
-	private String creator;
-
-	@Column(name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'")
-	private Timestamp createTime;
-
-	@Column(name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间'")
-	private Timestamp updateTime;
+    @Column(name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间'")
+    private Timestamp updateTime;
 
 	public Long getId() {
 		return id;
