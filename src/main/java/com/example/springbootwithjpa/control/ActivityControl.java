@@ -3,13 +3,16 @@ package com.example.springbootwithjpa.control;
 import com.example.springbootwithjpa.configuration.FileManagerConfiguration;
 import com.example.springbootwithjpa.model.ActivityLotteryCKeyModel;
 import com.example.springbootwithjpa.service.ActivityService;
+import com.example.springbootwithjpa.utils.ResponseData;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
-
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
@@ -78,5 +81,12 @@ public class ActivityControl {
 				}
 			}
 		}
+	}
+
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	@ApiOperation(value = "导入", notes = "导入", httpMethod = "POST")
+	public ResponseData<Integer> upload(@RequestParam("file") MultipartFile file) throws Exception {
+		ResponseData<Integer> rst = activityService.importDatas(file);
+		return rst;
 	}
 }

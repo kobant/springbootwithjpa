@@ -1,9 +1,12 @@
 package com.example.springbootwithjpa.service;
 
 import com.example.springbootwithjpa.model.ActivityLotteryCKeyModel;
+import com.example.springbootwithjpa.utils.ResponseData;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @Description:
@@ -42,4 +45,20 @@ public interface ActivityService {
 	 * @return
 	 */
 	public String exportDatasCsv(List<ActivityLotteryCKeyModel> list);
+
+
+	/**
+	 * 根据id查询数据
+	 * @param id
+	 * @return
+	 */
+	Optional<ActivityLotteryCKeyModel> findById(Integer id);
+
+
+	/**
+	 * 导入文件
+	 * @param file
+	 * @return
+	 */
+	public ResponseData<Integer> importDatas(MultipartFile file);
 }

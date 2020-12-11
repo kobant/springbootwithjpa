@@ -1,5 +1,7 @@
 package com.example.springbootwithjpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 /**
@@ -9,6 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "employee")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 public class Employee {
 
 	@Id

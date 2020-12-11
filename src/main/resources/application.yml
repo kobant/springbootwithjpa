@@ -1,26 +1,49 @@
+application:
+  name: springboot-apsjp
 
 server:
-  port: 9901
-
-
-  driver-class-name: com.mysql.jdbc.Driver
-  jdbc-url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8
-  username: root
-  password: mysqladmin
+  port: 9902
+#spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8
+    username: root
+    password: mysqladmin
+    driver-class-name: com.mysql.jdbc.Driver
+  data:
+    redis:
+      repositories:
+        enabled: false
 
 
   jpa:
-    hibernate:
+    properties:
+      hibernate:
+      enable_lazy_load_no_trans: true #解决懒加载问题
       ddl-auto: update
-  shardingsphere:
+    shardingsphere:
     props:
       sql:
         show: true
     masterslave:
 
+  redis:
+    database: 0
+    host: 192.168.44.131
+    port: 6379
+    password: 123
+    timeout: 6000ms
+    redis:
+      pool:
+        max-active: 5000
+        max-wait: -1
+        min-idle: 1
+        max-idle: 100
 
-file:
-saveLinuxPath: /tmp/store
-saveWindowsPath: D:\\picture
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 

@@ -13,16 +13,16 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "user")
+@Table(name = "new_user")
 public class User {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "u_name")
+	@Column(name = "u_name" ,columnDefinition = "varchar(16) not null default '' comment '用户姓名'")
 	private String name;
 
-	@Column(name = "u_email")
+	@Column(name = "u_email",columnDefinition = "varchar(16) not null default '' comment '用户邮编'")
 	private String email;
 
 	public Integer getId() {
