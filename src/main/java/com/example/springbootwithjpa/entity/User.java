@@ -25,6 +25,15 @@ public class User {
 	@Column(name = "u_email",columnDefinition = "varchar(16) not null default '' comment '用户邮编'")
 	private String email;
 
+	public User(String email,String name) {
+		this.email=email;
+		this.name=name;
+	}
+
+
+	public User() {
+	}
+
 	public Integer getId() {
 		return id;
 	}
