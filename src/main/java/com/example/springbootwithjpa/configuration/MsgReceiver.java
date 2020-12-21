@@ -1,3 +1,4 @@
+/*
 package com.example.springbootwithjpa.configuration;
 
 import org.slf4j.Logger;
@@ -6,11 +7,13 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
+*/
 /**
  * @Description:
  * @Author: liaocongcong
  * @Date: 2020/12/10 18:43
- */
+ *//*
+
 @Component
 @RabbitListener(queues = RabbitConfig.QUEUE_A)
 public class MsgReceiver {
@@ -22,3 +25,4 @@ public class MsgReceiver {
 	}
 
 }
+*/

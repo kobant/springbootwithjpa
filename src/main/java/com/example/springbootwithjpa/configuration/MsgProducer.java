@@ -1,3 +1,4 @@
+/*
 package com.example.springbootwithjpa.configuration;
 
 import org.slf4j.Logger;
@@ -9,11 +10,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
+*/
 /**
  * @Description:
  * @Author: liaocongcong
  * @Date: 2020/12/10 17:04
- */
+ *//*
+
 @Component
 public class MsgProducer implements RabbitTemplate.ConfirmCallback {
 
@@ -23,9 +26,11 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback {
 	//由于rabbitTemplate的scope属性设置为ConfigurableBeanFactory.SCOPE_PROTOTYPE，所以不能自动注入
 	private RabbitTemplate rabbitTemplate;
 
-	/**
+	*/
+/**
 	 * 构造方法注入
-	 */
+	 *//*
+
 
 	@Autowired
 	public MsgProducer(RabbitTemplate rabbitTemplate){
@@ -40,12 +45,14 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback {
 		rabbitTemplate.convertAndSend(RabbitConfig.EXCHANGE_A, RabbitConfig.ROUTINGKEY_A, content, correlationId);
 	}
 
-	/**
+	*/
+/**
 	 * 回调
 	 * @param correlationData
 	 * @param ack
 	 * @param s
-	 */
+	 *//*
+
 	@Override
 	public void confirm(CorrelationData correlationData, boolean ack, String s) {
          logger.info("回调id："+correlationData);
@@ -56,3 +63,4 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback {
 		 }
 	}
 }
+*/

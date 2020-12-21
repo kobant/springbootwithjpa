@@ -22,4 +22,9 @@ public class AspAop {
 	public JSONObject appTest2(@RequestParam("id") String id){
 		return JSON.parseObject("{\"message\":\"SUCCESS\",\"code\":200}");
 	}
+
+	@GetMapping("/{name}")
+	public String testAop(@PathVariable String name) {
+		return "Hello " + name;
+	}
 }

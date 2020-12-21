@@ -41,14 +41,14 @@ public class TestOptional {
 		assertEquals("John", opt.get());
 	}
 
-	@Test
+	/*@Test
 	public void whenCheckIfPresent_thenOk() {
 		User user = new User("john@gmail.com", "1234");
 		Optional<User> opt = Optional.ofNullable(user);
 		assertTrue(opt.isPresent());
 
 		assertEquals(user.getEmail(), opt.get().getEmail());
-	}
+	}*/
 
 
 }

@@ -1,10 +1,13 @@
 package com.example.springbootwithjpa.control;
 
+import com.example.springbootwithjpa.configuration.RedisUtil;
 import com.example.springbootwithjpa.dao.UserDao;
 import com.example.springbootwithjpa.entity.CommonResult;
 
 import com.example.springbootwithjpa.entity.JpaUser;
 import com.example.springbootwithjpa.entity.User;
+import com.example.springbootwithjpa.utils.StringsUtil;
+import com.google.common.base.Strings;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -13,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -22,10 +26,12 @@ import java.util.List;
  * @version 1.0
  * 创建时间 2020/10/10 16:26
  */
-@Controller
+@RestController
 @Api(tags = "UserController", description = "用户管理系统")
 public class UserController {
 
+	@Resource
+	private RedisUtil redisUtil;
 	@Autowired
     UserDao userDao;
 
@@ -57,6 +63,7 @@ public class UserController {
 		return  new CommonResult().success(all);
 	}
 
+
 	/**
 	 * 我也提交吧
 	 * @param id
@@ -69,20 +76,30 @@ public class UserController {
 			@ApiImplicitParam(name = "id", value = "id不用传",  required = false,dataType="Integer")
 	})
 	public Object hello(@PathVariable("id") Integer id){
-		User one = userDao.findByUserId(id);
-		if (one!=null){
-			return new CommonResult().success("查询成功！",one);
+		User user = new User();
+		String redisKey = "USER-PROTEC-:"+id;
+		boolean flag= redisUtil.hasKey(redisKey);
+		if (flag){
+			user= (User) redisUtil.get(redisKey);
 		}else {
-			return new CommonResult().failed("查询失败！");
+			user = userDao.findByUserId(id);
+			redisUtil.set(redisKey,user);
 		}
-
+		return new CommonResult().success("查询成功！",user);
 	}
 
 	@PostMapping("/hello/add")
 	@ApiOperation("保存对象USER")
-	public Object saveUser(User user){
+	public Object saveUser(@RequestBody User user){
 
-		return userDao.save(user);
+       /* if (user.getId()!=null){
+        	user = userDao.getOne(user.getId());
+		}*/
+		String keys= StringsUtil.getShortUuid();
+		String redisKey = "USER-PROTEC-:"+user.getId();
+		userDao.saveAndFlush(user);
+        redisUtil.set(redisKey,user);
+		return new CommonResult().success();
 	}
 
 	@GetMapping("/helloname/{name}")
@@ -106,6 +123,13 @@ public class UserController {
 	@GetMapping("/delete/{id}")
 	@ResponseBody
 	public Object delete(@PathVariable("id") Integer id){
+		String redisKey = "USER-PROTEC-:"+id;
+		redisUtil.del(redisKey);
+		try {
+			Thread.sleep(1000);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		int b = userDao.deleteUser(id);
         if (b>0){
 			return new CommonResult().success("删除成功！");
