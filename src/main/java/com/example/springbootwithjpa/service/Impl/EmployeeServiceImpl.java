@@ -3,6 +3,7 @@ package com.example.springbootwithjpa.service.Impl;
 
 import com.example.springbootwithjpa.dao.EmployeeRepstory;
 import com.example.springbootwithjpa.entity.Employee;
+import com.example.springbootwithjpa.exception.JMException;
 import com.example.springbootwithjpa.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -26,8 +27,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	@Transactional
 	@Cacheable(cacheNames = {"emp"})
-	public Employee findbyid(Integer id) {
+	public void findbyid(Integer id) {
+		if (id==1){
+			throw new JMException(110,"helloworld");
+		}
 		Employee byId = employeeRepstory.getOne(id);
-		return byId;
 	}
 }

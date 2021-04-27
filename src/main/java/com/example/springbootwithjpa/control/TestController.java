@@ -1,3 +1,4 @@
+/*
 package com.example.springbootwithjpa.control;
 
 import com.example.springbootwithjpa.service.GoodsStoreFacade;
@@ -20,22 +21,26 @@ public class TestController {
 	@Autowired
 	private GoodsStoreFacade goodsStoreService;
 
-	/**
+	*/
+/**
 	 * 进入测试页面
 	 * @param model
 	 * @return
-	 */
+	 *//*
+
 	@GetMapping("test")
 	public ModelAndView stepOne(Model model){
 		return new ModelAndView("test", "model", model);
 	}
 
-	/**
+	*/
+/**
 	 * 秒杀提交
 	 * @param code
 	 * @param num
 	 * @return
-	 */
+	 *//*
+
 	@PostMapping("secKill")
 	@ResponseBody
 	public String secKill(@RequestParam(value="code",required=true) String code,@RequestParam(value="num",required=true) Integer num){
@@ -43,3 +48,4 @@ public class TestController {
 		return reString;
 	}
 }
+*/

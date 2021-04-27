@@ -1,3 +1,4 @@
+/*
 package com.example.springbootwithjpa.control;
 
 import com.example.springbootwithjpa.configuration.RedisUtil;
@@ -12,13 +13,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+*/
 /**
  * /**
  *
  * @author 廖聪聪
  * @version 1.0
  * 创建时间 2020/10/14 16:28
- */
+ *//*
+
 @RestController
 public class RedisController {
 
@@ -104,3 +107,4 @@ public class RedisController {
 	}
 
 }
+*/

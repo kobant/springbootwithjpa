@@ -1,6 +1,7 @@
+/*
 package com.example.springbootwithjpa.control;
 
-import com.example.springbootwithjpa.configuration.RedisUtil;
+
 import com.example.springbootwithjpa.dao.UserDao;
 import com.example.springbootwithjpa.entity.CommonResult;
 
@@ -19,13 +20,15 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
+*/
 /**
  * /**
  *
  * @author 廖聪聪
  * @version 1.0
  * 创建时间 2020/10/10 16:26
- */
+ *//*
+
 @RestController
 @Api(tags = "UserController", description = "用户管理系统")
 public class UserController {
@@ -49,10 +52,12 @@ public class UserController {
 
 
 
-	/**
+	*/
+/**
 	 * 真的提交一次
 	 * @return
-	 */
+	 *//*
+
 	@ApiOperation("发起拼团")
 	@GetMapping("/hello")
 	@ResponseBody
@@ -64,11 +69,13 @@ public class UserController {
 	}
 
 
-	/**
+	*/
+/**
 	 * 我也提交吧
 	 * @param id
 	 * @return
-	 */
+	 *//*
+
 	@GetMapping("/hello/{id}")
 	@ResponseBody
 	@ApiOperation(value = "根据主键查询对象",notes = "员工编号必须传递")
@@ -92,9 +99,11 @@ public class UserController {
 	@ApiOperation("保存对象USER")
 	public Object saveUser(@RequestBody User user){
 
-       /* if (user.getId()!=null){
+       */
+/* if (user.getId()!=null){
         	user = userDao.getOne(user.getId());
-		}*/
+		}*//*
+
 		String keys= StringsUtil.getShortUuid();
 		String redisKey = "USER-PROTEC-:"+user.getId();
 		userDao.saveAndFlush(user);
@@ -115,11 +124,13 @@ public class UserController {
 	}
 
 
-	/**
+	*/
+/**
 	 * 测试
 	 * @param id
 	 * @return
-	 */
+	 *//*
+
 	@GetMapping("/delete/{id}")
 	@ResponseBody
 	public Object delete(@PathVariable("id") Integer id){
@@ -160,3 +171,4 @@ public class UserController {
 
 
 }
+*/

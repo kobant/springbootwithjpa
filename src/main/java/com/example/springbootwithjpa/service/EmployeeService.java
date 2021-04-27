@@ -10,5 +10,5 @@ import com.example.springbootwithjpa.entity.Employee;
  */
 public interface EmployeeService {
 
-	public Employee findbyid(Integer id);
+	public void findbyid(Integer id);
 }

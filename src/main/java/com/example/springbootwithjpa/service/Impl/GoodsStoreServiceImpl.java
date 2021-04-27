@@ -1,3 +1,4 @@
+/*
 package com.example.springbootwithjpa.service.Impl;
 
 import com.example.springbootwithjpa.Lock.RedisLock;
@@ -9,13 +10,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+*/
 /**
  *
  *
  * @author 廖聪聪
  * @version 1.0
  * 创建时间 2020/10/15 15:43
- */
+ *//*
+
 @Service
 public class GoodsStoreServiceImpl implements GoodsStoreFacade {
 
@@ -25,9 +28,11 @@ public class GoodsStoreServiceImpl implements GoodsStoreFacade {
 	@Autowired
 	private RedisLock redisLock;
 
-	/**
+	*/
+/**
 	 * 超5秒报错
-	 */
+	 *//*
+
 	private static final int TIMEOUT = 5*1000;
 
 	@Override
@@ -67,14 +72,17 @@ public class GoodsStoreServiceImpl implements GoodsStoreFacade {
 		}
 	}
 
-	/**
+	*/
+/**
 	 * 获取库存对象
 	 * @param code
 	 * @return
-	 */
+	 *//*
+
 	@Override
 	public GoodsStore getGoodsStore(String code) {
 		Optional<GoodsStore> optional = goodsStoreRespository.findById(code);
 		return optional.get();
 	}
 }
+*/

@@ -4,6 +4,7 @@ package com.example.springbootwithjpa.control;
 import com.example.springbootwithjpa.entity.Employee;
 import com.example.springbootwithjpa.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,9 +21,9 @@ public class EmployeeControl {
 	@Autowired
 	private EmployeeService employeeService;
 
-	@RequestMapping(value = "/find/{id}")
+	@GetMapping(value = "/find/{id}")
 	public Employee getEmpById(@PathVariable("id") Integer id) {
-		Employee empById = employeeService.findbyid(id);
-		return empById;
+		employeeService.findbyid(id);
+		return null;
 	}
 }
